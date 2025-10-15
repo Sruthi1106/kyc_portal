@@ -1,0 +1,14 @@
+<section class="admin-login">
+  <h2>Admin Login</h2>
+  <form [formGroup]="form" (ngSubmit)="login()" novalidate>
+    <label>Email
+      <input type="email" formControlName="email" required />
+    </label>
+    <label>Password
+      <input type="password" formControlName="password" required />
+    </label>
+    <button class="btn primary" type="submit" [disabled]="form.invalid || loading">
+      {{ loading ? 'Signing in...' : 'Login' }}
+    </button>
+  </form>
+</section>

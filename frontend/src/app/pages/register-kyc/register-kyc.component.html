@@ -1,0 +1,52 @@
+<section class="register-kyc">
+  <h2>KYC Registration</h2>
+  <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+    <div class="grid">
+      <label>
+        Full Name
+        <input formControlName="name" type="text" required />
+      </label>
+      <label>
+        Email
+        <input formControlName="email" type="email" required />
+      </label>
+      <label>
+        Phone
+        <input formControlName="phone" type="tel" required />
+      </label>
+      <label class="wide">
+        Address
+        <input formControlName="address" type="text" required />
+      </label>
+      <label>
+        Aadhaar Number
+        <input formControlName="aadhaar" type="text" />
+      </label>
+      <label>
+        PAN Number
+        <input formControlName="pan" type="text" />
+      </label>
+    </div>
+    <label>
+      Password
+      <input formControlName="password" type="password" required />
+    </label>
+
+    <fieldset>
+      <legend>Upload Documents</legend>
+      <label>Aadhaar
+        <input type="file" (change)="onFile($event, 'aadhaar')" accept="image/*,.pdf" />
+      </label>
+      <label>PAN
+        <input type="file" (change)="onFile($event, 'pan')" accept="image/*,.pdf" />
+      </label>
+      <label>Photo
+        <input type="file" (change)="onFile($event, 'photo')" accept="image/*" />
+      </label>
+    </fieldset>
+
+    <button class="btn primary" type="submit" [disabled]="form.invalid || loading">
+      {{ loading ? 'Submitting...' : 'Submit' }}
+    </button>
+  </form>
+</section>

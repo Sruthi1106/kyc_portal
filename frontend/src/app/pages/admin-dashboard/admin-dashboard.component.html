@@ -1,0 +1,28 @@
+<section class="admin-dashboard">
+  <h2>Admin Dashboard</h2>
+  <input type="search" placeholder="Search users" [(ngModel)]="q" />
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Submitted</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of filtered()">
+        <td>{{ u.name }}</td>
+        <td>{{ u.email }}</td>
+        <td>{{ u.status }}</td>
+        <td>{{ u.createdAt | date:'short' }}</td>
+        <td>
+          <a class="btn" [routerLink]="['/admin/kyc', u._id]">View</a>
+          <button class="btn success" (click)="updateStatus(u._id, 'Approved')">Approve</button>
+          <button class="btn warn" (click)="updateStatus(u._id, 'Rejected')">Reject</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
