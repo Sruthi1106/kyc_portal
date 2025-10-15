@@ -1,0 +1,21 @@
+<section *ngIf="kyc as k" class="kyc-details">
+  <h2>KYC Details</h2>
+  <div class="grid">
+    <div><strong>Name:</strong> {{ k.name }}</div>
+    <div><strong>Email:</strong> {{ k.email }}</div>
+    <div><strong>Phone:</strong> {{ k.phone }}</div>
+    <div class="wide"><strong>Address:</strong> {{ k.address }}</div>
+    <div><strong>Aadhaar:</strong> {{ k.aadhaar }}</div>
+    <div><strong>PAN:</strong> {{ k.pan }}</div>
+  </div>
+  <div class="docs">
+    <a *ngIf="k.documents?.aadhaar" [href]="k.documents.aadhaar" target="_blank">Aadhaar</a>
+    <a *ngIf="k.documents?.pan" [href]="k.documents.pan" target="_blank">PAN</a>
+    <a *ngIf="k.documents?.photo" [href]="k.documents.photo" target="_blank">Photo</a>
+  </div>
+  <div class="actions">
+    <input placeholder="Reason (optional)" [(ngModel)]="reason" />
+    <button class="btn success" (click)="update('Approved')">Approve</button>
+    <button class="btn warn" (click)="update('Rejected')">Reject</button>
+  </div>
+</section>

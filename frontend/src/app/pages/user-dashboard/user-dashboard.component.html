@@ -1,0 +1,14 @@
+<section class="dashboard">
+  <h2>User Dashboard</h2>
+  <div class="profile" *ngIf="profile as p">
+    <h3>{{ p.name }}</h3>
+    <p>{{ p.email }} • {{ p.phone }}</p>
+    <p>Status: <strong>{{ p.status }}</strong></p>
+    <div class="docs">
+      <a *ngIf="p.documents?.aadhaar" [href]="p.documents.aadhaar" target="_blank">Aadhaar</a>
+      <a *ngIf="p.documents?.pan" [href]="p.documents.pan" target="_blank">PAN</a>
+      <a *ngIf="p.documents?.photo" [href]="p.documents.photo" target="_blank">Photo</a>
+    </div>
+  </div>
+  <button class="btn" (click)="logout()">Logout</button>
+</section>
